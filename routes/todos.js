@@ -1,6 +1,5 @@
 import Router from 'koa-router'
 import {Model} from 'mongorito'
-
 import {User} from './users.js'
 
 export class Todo extends Model {}
@@ -19,7 +18,7 @@ async function login(ctx, next) {
 }
 
 router.get('/', async ctx => {
-  ctx.body = await Todo.all()
+  ctx.body = 'welcome'
 })
 
 router.post('/', login, async ctx => {
