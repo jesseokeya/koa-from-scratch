@@ -3,7 +3,7 @@ import Router from 'koa-router'
 import {Model} from 'mongorito'
 
 export class User extends Model {
-  configure() {
+  configure () {
     this.before('save', async () => {
       if (!this.get('name')) {
         throw new Error('Missing name.')
@@ -15,7 +15,8 @@ export class User extends Model {
     })
 
     this.verify = async password => {
-      return await argon2.verify(this.get('password'), password)
+      const result = await argon2.verify(this.get('password'), password)
+      return result
     }
   }
 }

@@ -10,7 +10,7 @@ export const app = new Koa()
 app.use(bodyparser())
 
 const router = new Router()
-router.use('/todos', todos.routes())
+router.use('/todos', todos.routes(), todos.allowedMethods())
 router.use('/users', users.routes(), users.allowedMethods())
 app.use(router.routes())
 app.listen(4000)
